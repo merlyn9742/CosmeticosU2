@@ -1,0 +1,164 @@
+.title-welcome {
+  font-family: Arial, sans-serif;
+  font-weight: 200;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 18px;
+  padding: 2%;
+}
+
+hr {
+  border: 0;
+  border-top: 2px solid #eee;
+  margin: 20px 0;
+}
+
+.parpadeo {
+  -webkit-animation: opac 1s;
+  animation: opac 1s;
+}
+
+#image {
+  /*max-width: 100%;*/
+  height: auto;
+  min-width: 500px;
+}
+
+.welcome {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  max-width: 1500px;
+  width: 100%;
+  height: auto;
+}
+
+.display-left {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  padding: 8px 16px !important;
+  width: 500px;
+}
+
+.opacity {
+  opacity: 0.6;
+}
+
+.hover-opacity-off:hover {
+  opacity: 100;
+}
+
+.padding-large {
+  padding: 12px 24px !important;
+}
+
+.button {
+  border: none;
+  display: block;
+  padding: 8px 12px;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+  font-size: 20px;
+  height: 10%;
+}
+
+@-webkit-keyframes opac {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opac {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.section {
+  width: 100%;
+  display: table;
+  margin: 0;
+  max-width: none;
+  height: 60vh;
+}
+
+.content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.title-sections {
+  font-size: 3em;
+  display: block;
+  color: white;
+  font-weight: 300;
+}
+
+.text-sections {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #C3CAD9;
+}
+
+.link {
+  color: #C3CAD9;
+  position: relative;
+}
+
+.link:hover {
+  color: #373B44;
+}
+
+.link:active {
+  top: 1px;
+}
+
+.pago {
+  height: auto;
+  width: 35%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Colores */
+
+.pink,
+.hover-pink:hover {
+  color: #fff !important;
+  background-color: #e91e63 !important;
+}
+
+.black,
+.hover-black:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+.color-gray {
+  background-color: #373B44;
+}
+
+.color-pink {
+  background-color: #FE4B74;
+}
+

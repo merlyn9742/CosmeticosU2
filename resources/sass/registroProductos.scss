@@ -1,0 +1,73 @@
+/* registroProducto */
+
+#regProducto {
+  display: flex;
+  width: 50%;
+  height: auto;
+  margin-top: 5em;
+  border-radius: 1em;
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  min-width: 400px;
+}
+
+#title-regis {
+  margin-top: 15px;
+  padding: 5px;
+  font-family: Roboto;
+}
+
+.inputBox {
+  border: none;
+  border-bottom: 2px solid pink;
+  margin: 15px;
+}
+
+.formPro {
+  display: flex;
+  height: 100%;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+
+.parte1 {
+  width: 50%;
+  height: 100%;
+}
+
+.parte2 {
+  width: 50%;
+  height: 100%;
+}
+
+.sectionBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+label {
+  margin: 5px;
+}
+
+.botonForm {
+  width: 250px;
+}
+
+.regBoton {
+  width: 80%;
+  height: 45px;
+  border: none;
+  background: #fc5185;
+  color: #f5f5f5;
+  font-weight: 100;
+  padding: 7px;
+  border-radius: 5px;
+  transition: all ease-in-out 0.2s;
+  border-bottom: 2px solid #8a8a8a;
+  font-size: 20px;
+  cursor: pointer;
+}
+

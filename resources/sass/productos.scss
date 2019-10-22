@@ -1,0 +1,55 @@
+.parentAbsoluto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  margin-top: 4em;
+  flex-direction: column;
+  min-width: 720px;
+  margin: 0 auto;
+}
+
+.parentCajas {
+  overflow: auto;
+  display: flex;
+  background-color: #379fa7;
+  border-radius: 1em;
+  width: 90%;
+  min-height: 95%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.parentCajas h3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.caja {
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  width: 25%;
+  border-radius: 5px;
+  margin: 0.5em;
+  padding: 10px 10px;
+}
+
+.caja div p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.caja div h5 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
