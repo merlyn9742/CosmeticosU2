@@ -10,6 +10,8 @@
             }
         };
     </script>
+
+    <!-- Contenedor de las imagenes  para la animacion de fondo -->
     <div class="hero-image-contenedor-imagenes">
         <figure></figure>
         <figure></figure>
@@ -18,13 +20,17 @@
         <figure></figure>
     </div>
 
+    <!-- Contenedor principal de toda la aplicación -->
     <div class="hero-image-contenedor-contenido">
         <div class="hero-image-contenido">
 
+            <!-- Contenedor del mensaje de bievenida de la aplicación -->
             <div class="hero-text" id="divTexto" style="display: flex">
                 <h2>Makeup|<span><span>L</span></span>ara<span>B</span>ella</h2>
                 <p>¡Si&eacute;ntete LARABELLA!</p>
             </div>
+
+            <!-- Contenedor del mensaje del despliegue de productos -->
             <div class="hero-text" id="divDesliza" style="display: none;">
                 <h2><span>D</span>esliza</h2>
                 <p>¡Para ver los productos!</p>
@@ -60,6 +66,7 @@
                     </div>
                 </div>
             </section>
+
             <!-- REGISTRO -->
             <section id="sectionRegistrarse" id="divProductos" style="display: none;">
                 <div id="mensajeRegistro" class="mensajeRegistro" style="display: none">
@@ -91,7 +98,8 @@
                     </form>
                 </div>
             </section>
-            <!-- Agregar un producto -->
+
+            <!-- CONTENEDOR DEL FORMULARIO PARA REGISTRAR UN NUEVO PRODUCTO -->
             <section id="regProducto" style="display: none;">
                 <div id="mensajeRegistroP" class="mensajeRegistro mensajeRegistroP" style="display: none">
                     <h5>Se ha agregado con &eacute;xito el producto.</h5>
@@ -153,7 +161,8 @@
                     </center>
                 </form>
             </section>
-            <!-- BIENVENIDA -->
+
+            <!-- CONTENEDOR DE BIEVENIDA TRAS LOGIN -->
             <div id="welcome" style="display: none;">
                 <div class="parpadeo">
                     <img id="image" src="/assets/images/fondos/cosmetic4.jpg" width="1500" height="1000">
