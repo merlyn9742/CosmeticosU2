@@ -27,6 +27,8 @@
     @yield('section')
 
     @include('Parcials.footer')
+    <script src="{{asset('/js/jslib/jquery-3.4.1_min.js')}}"></script>
+    <script src="{{asset('/js/jslib/jquery-ui/jquery-ui.js')}}"></script>
     <script src="{{asset('/js/animaciones.js')}}"></script>
     <script src="{{asset('/js/login.js')}}"></script>
     <script src="{{asset('/js/productos.js')}}"></script>
