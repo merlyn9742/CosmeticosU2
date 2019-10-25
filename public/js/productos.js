@@ -14,7 +14,7 @@ function muestraSelect(valueSelect){
 
 function filtrado(selectFiltro,linea,tipo){
     if (selectFiltro == 1) {
-        var url = "https://cosmeticos.dev/api/productos/linea";
+        var url = "https://cosmeticosu2.dev/api/productos/linea";
         var queryString = "linea="+linea;
         llamadasParciales(url, queryString,"POST");
     }else if(selectFiltro == 2){
@@ -40,7 +40,7 @@ function llamaBuscaProductos() {
     pro.style.display="none";
     welcome.style.display = "none";
     divDesliza.style.display = "flex";
-    var url = "https://cosmeticos.dev/api/productos";
+    var url = "https://cosmeticosu2.dev/api/productos";
     llamadasParciales(url,"","GET");
 }
 
@@ -54,6 +54,7 @@ function llamadasParciales (url,queryString,metodo){
         } else {
             if (request.status != 200 && request.status != 0)
                 alert("Hubo error, status " + request.status);
+            loaderProductos.style.display = "none";
         }
     };
     request.open(metodo, url, true);

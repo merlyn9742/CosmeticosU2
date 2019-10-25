@@ -20,6 +20,7 @@ function muestraLogin() {
         divDesliza.style.display = "none";
     }
 }
+
 function cambiaForms(){
     var sectionLogin=document.getElementById("sectionLogin");
     var sectionRegistrarse=document.getElementById("sectionRegistrarse");
@@ -35,9 +36,10 @@ function cambiaForms(){
         divDesliza.style.display = "none";
     }
 }
+
 function llamaLogin(cuentaUsuario, contrasenia){
 	var request = new XMLHttpRequest();
-	var url = "https://cosmeticos.dev/api/login";
+	var url = "https://cosmeticosu2.dev/api/login";
 	var sQueryString="";
 
 	if (cuentaUsuario=="" || contrasenia==""){
@@ -52,6 +54,7 @@ function llamaLogin(cuentaUsuario, contrasenia){
 				if (request.status != 200 &&request.status != 0){
 					var msj = JSON.parse(request.responseText);
 					alert(msj.mensaje);
+                    loaderLogin.style.display = "none";
 				}
 			}
 		};
@@ -63,6 +66,7 @@ function llamaLogin(cuentaUsuario, contrasenia){
 		loaderLogin.style.display = "flex";
 	}
 }
+
 function verificaStorage(nombre, tipoUsuario) {
     var divTexto = document.getElementById("divTexto");
     var divWelcome1=document.getElementById("welcome");
@@ -86,6 +90,7 @@ function verificaStorage(nombre, tipoUsuario) {
     sectionLogin.style.display="none";
     sectionRegistrarse.style.display="none"
 }
+
 function procesaLogin(textoRespuesta){
     var datos = JSON.parse(textoRespuesta);
 	var divWelcome1=document.getElementById("welcome");
@@ -118,6 +123,7 @@ function procesaLogin(textoRespuesta){
         sectionRegistrarse.style.display="none"
     }
 }
+
 function cerrarSesion(){
 	sessionStorage.clear();
 	var logout = document.getElementById("logout");
@@ -145,6 +151,7 @@ function cerrarSesion(){
 	divTexto.style.display="flex";
 	document.getElementById("formLogin").reset();
 }
+
 function registraUsuario(){
     var mensajeRegisttro = document.getElementById("mensajeRegistro");
     mensajeRegisttro.style.display="flex";
