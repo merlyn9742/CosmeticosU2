@@ -43,34 +43,27 @@ function llamaBuscaProductos() {
     llamadasParciales(url,"","GET");
 }
 
-function llamadasParciales (url,queryString,metodo){
-    var request = new XMLHttpRequest();
-    var loaderProductos = $("#loaderProductos");
-    request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-            loaderProductos.hide();
-            pintaProductos(request.responseText);
-        } else {
-            if (request.status != 200 && request.status != 0)
-                alert("Hubo error, status " + request.status);
-            loaderProductos.hide();
+
+function llamadasParciales(url,queryString,metodo){
+            var llamada = $.get(
+                    url, 
+                    { //datos a enviar
+                        queryString
+                    }, 
+                    function(oDatos) { //trabajo a realizar en caso de éxito
+                        pintaProductos(oDatos);
+                    } //fin function llamada ok
+                ); //fin configura llamada
+            llamada.fail(function(objRequest, status){
+                    alert("Error al invocar al servidor, intente posteriormente");
+                    console.log(status);
+                });
         }
-    };
-    request.open(metodo, url, true);
-    //Se avisa que se envían parámetros que se van a entender como un formulario
-    request.setRequestHeader("Content-type",
-        "application/x-www-form-urlencoded");
-    request.send(queryString);
-    loaderProductos.show();
-}
 
-
-function pintaProductos(respuesta) {
-    var datos = JSON.parse(respuesta);
-    //var p = document.getElementById("parentCajas");
+function pintaProductos(datos) {
+    console.log(datos);
     var p = $('#parentCajas');
     if(p!=null){
-        //var parentCajas=document.getElementById("parentCajas");
         var parentCajas = $('#parentCajas');
         parentCajas.remove();
     }
