@@ -1,60 +1,59 @@
 function muestraSelect(valueSelect){
-    var divSelectLineas = document.getElementById("lineas");
-    var divSelecTipos = document.getElementById("tipos");
-    var inputFiltra = document.getElementById("inputFiltra");
-    inputFiltra.style.display = "flex";
+    var divSelectLineas = $('#lineas');
+    var divSelecTipos = $('#tipos');
+    var inputFiltra = $('#inputFiltra');
+    inputFiltra.show();
    if(valueSelect == 1){
-        divSelectLineas.style.display = "flex";
-        divSelecTipos.style.display = "none";
+        divSelectLineas.show();
+        divSelecTipos.hide();
    }else if (valueSelect == 2) {
-        divSelecTipos.style.display = "flex";
-        divSelectLineas.style.display = "none";
+        divSelecTipos.show();
+        divSelectLineas.hide();
    }
 }
 
 function filtrado(selectFiltro,linea,tipo){
     if (selectFiltro == 1) {
-        var url = "https://cosmeticosu2.dev/api/productos/linea";
+        var url = "api/productos/linea";
         var queryString = "linea="+linea;
         llamadasParciales(url, queryString,"POST");
     }else if(selectFiltro == 2){
-        var url = "/api/productos/tipo";
+        var url = "api/productos/tipo";
         var queryString = "tipo="+tipo;
         llamadasParciales(url, queryString,"POST");
     }
 }
 
 function llamaBuscaProductos() {
-    var sectionRegistrarse= document.getElementById("sectionRegistrarse");
-    sectionRegistrarse.style.display = "none";
-    var divDesliza = document.getElementById("divDesliza");
-
-    var divTexto = document.getElementById("divTexto");
-    divTexto.style.display = "none";
-    var login = document.getElementById("sectionLogin");
-    login.style.display="none";
-    var divParentAbsoluto = document.getElementById('parentAbsoluto');
-    divParentAbsoluto.style.display = "flex";
-    var welcome = document.getElementById('welcome');
-    var pro = document.getElementById('regProducto');
-    pro.style.display="none";
-    welcome.style.display = "none";
-    divDesliza.style.display = "flex";
-    var url = "https://cosmeticosu2.dev/api/productos";
+    var sectionRegistrarse = $('#sectionRegistrarse');
+    sectionRegistrarse.hide();
+    var divDesliza = $('#divDesliza');
+    var divTexto = $('#divTexto');
+    divTexto.hide();
+    var login = $('#sectionLogin');
+    login.hide();
+    var divParentAbsoluto = $('#parentAbsoluto');
+    divParentAbsoluto.show();
+    var welcome = $('#welcome');
+    var pro = $('#regProducto');
+    pro.hide();
+    welcome.hide();
+    divDesliza.show();
+    var url = "api/productos";
     llamadasParciales(url,"","GET");
 }
 
 function llamadasParciales (url,queryString,metodo){
     var request = new XMLHttpRequest();
-    var loaderProductos = document.getElementById("loaderProductos");
+    var loaderProductos = $("#loaderProductos");
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
-            loaderProductos.style.display = "none";
+            loaderProductos.hide();
             pintaProductos(request.responseText);
         } else {
             if (request.status != 200 && request.status != 0)
                 alert("Hubo error, status " + request.status);
-            loaderProductos.style.display = "none";
+            loaderProductos.hide();
         }
     };
     request.open(metodo, url, true);
@@ -62,88 +61,89 @@ function llamadasParciales (url,queryString,metodo){
     request.setRequestHeader("Content-type",
         "application/x-www-form-urlencoded");
     request.send(queryString);
-    loaderProductos.style.display = "flex";
+    loaderProductos.show();
 }
+
 
 function pintaProductos(respuesta) {
     var datos = JSON.parse(respuesta);
-    var p = document.getElementById("parentCajas");
+    //var p = document.getElementById("parentCajas");
+    var p = $('#parentCajas');
     if(p!=null){
-        var parentCajas=document.getElementById("parentCajas");
+        //var parentCajas=document.getElementById("parentCajas");
+        var parentCajas = $('#parentCajas');
         parentCajas.remove();
     }
-    var parentAbsoluto = document.getElementById("parentAbsoluto");
-    var divParentCajas = document.createElement("div");
-    divParentCajas.className="parentCajas";
-    divParentCajas.id="parentCajas";
-    parentAbsoluto.appendChild(divParentCajas);
+    var parentAbsoluto = $('#parentAbsoluto');
+    var divParentCajas = $('<div></div>');
+    divParentCajas.attr('class', 'parentCajas');
+    divParentCajas.attr('id', 'parentCajas');
+    parentAbsoluto.append(divParentCajas);
     if(datos.arregloProductos === null){
-        var divTextoMensaje = document.createElement("h4");
-        var textoMensaje = document.createTextNode("¡Lo sentimos, no tenemos productos para mostrar con estas caracteristicas!");
-        divParentCajas.appendChild(divTextoMensaje);
-        divTextoMensaje.appendChild(textoMensaje);
+        var divTextoMensaje = $('<h4>¡Lo sentimos, no tenemos productos para mostrar con estas caracteristicas!</h4>');
+        divParentCajas.append(divTextoMensaje);
     }else{
         for (var i=0;i<datos.arregloProductos.length;i++){
-            var caja = document.createElement("div");
-            caja.className="caja";
+            var caja = $('<div></div>').attr('class', 'caja');
 
             //Elementos de la caja
-            var divTexto = document.createElement("div");
-            var divTextoTitulo = document.createElement("h5");
-            var tituloTexto = document.createTextNode(datos.arregloProductos[i][4]);
-
-            var divImagen = document.createElement("div");
-            var divImagenImg = document.createElement("img");
-            divImagenImg.setAttribute('width','100em');
-            divImagenImg.setAttribute('heigth','100em');
-            divImagenImg.src=datos.arregloProductos[i][7];
-
-            var divDescripcion = document.createElement("div");
-            var divDescripcionDesc = document.createElement("p");
-            var descripcionTexto = document.createTextNode(datos.arregloProductos[i][5]);
-            var divDescripcionLinea = document.createElement("p");
-            var lineaTexto = document.createTextNode(datos.arregloProductos[i][1]);
-            var divDescripcionTipo = document.createElement("p");
-            var tipoTexto = document.createTextNode(datos.arregloProductos[i][2]);
+            var divTexto = $('<div></div>');
+            var divTextoTitulo =  $('<h5></h5>');
+            var tituloTexto = datos.arregloProductos[i][4];
 
 
-            var divDescripcionColor = document.createElement("p");
-            var colorTexto = document.createTextNode(datos.arregloProductos[i][6]);
-            var divPrecio = document.createElement("div");
-            var divPrecioPre = document.createElement("span");
-            var precioTexto = document.createTextNode("$"+datos.arregloProductos[i][8]+" MXN");
+            var divImagen = $('<div></div>');
+            var divImagenImg = $('<img></img>');
+            divImagenImg.attr('width','100em');
+            divImagenImg.attr('heigth','100em');
+            divImagenImg.attr('src', datos.arregloProductos[i][7]);
 
-            var divCompra = document.createElement("div");
-            var btnCompra = document.createElement("button");
-            var btnCompraTexto = document.createTextNode("Comprar");
+            var divDescripcion = $('<div></div>');
+            var divDescripcionDesc = $('<p></p>');
+            var descripcionTexto = datos.arregloProductos[i][5];
+            var divDescripcionLinea = $('<p></p>');
+            var lineaTexto = datos.arregloProductos[i][1];
+            var divDescripcionTipo = $('<p></p>');
+            var tipoTexto = datos.arregloProductos[i][2];
 
 
-            divParentCajas.appendChild(caja);
-            caja.appendChild(divTexto);
-            divTexto.appendChild(divTextoTitulo);
-            divTextoTitulo.appendChild(tituloTexto);
-            caja.appendChild(divImagen);
-            divImagen.appendChild(divImagenImg);
-            caja.appendChild(divDescripcion);
-            divDescripcion.appendChild(divDescripcionDesc);
-            divDescripcionDesc.appendChild(descripcionTexto);
-            divDescripcion.appendChild(divDescripcionTipo);
-            divDescripcionTipo.appendChild(tipoTexto);
-            divDescripcion.appendChild(divDescripcionLinea);
-            divDescripcionLinea.appendChild(lineaTexto);
+            var divDescripcionColor =$('<p></p>');
+            var colorTexto = datos.arregloProductos[i][6];
+            var divPrecio = $('<div></div>');
+            var divPrecioPre = $('<span></span>');
+            var precioTexto = "$"+datos.arregloProductos[i][8]+" MXN";
+
+            var divCompra = $('<div></div>');
+            var btnCompra = $('<button></button>');
+            var btnCompraTexto = "Comprar";
+
+
+            divParentCajas.append(caja);
+            caja.append(divTexto);
+            divTexto.append(divTextoTitulo);
+            divTextoTitulo.append(tituloTexto);
+            caja.append(divImagen);
+            divImagen.append(divImagenImg);
+            caja.append(divDescripcion);
+            divDescripcion.append(divDescripcionDesc);
+            divDescripcionDesc.text(descripcionTexto);
+            divDescripcion.append(divDescripcionTipo);
+            divDescripcionTipo.text(tipoTexto);
+            divDescripcion.append(divDescripcionLinea);
+            divDescripcionLinea.text(lineaTexto);
             if(datos.arregloProductos[i][6]!=null){
-                divDescripcion.appendChild(divDescripcionColor);
-                divDescripcionColor.appendChild(colorTexto);
+                divDescripcion.append(divDescripcionColor);
+                divDescripcionColor.text(colorTexto);
             }
             if(sessionStorage.length>0){
-                caja.appendChild(divPrecio);
-                divPrecio.appendChild(divPrecioPre);
-                divPrecioPre.appendChild(precioTexto);
-                caja.appendChild(divCompra);
+                caja.append(divPrecio);
+                divPrecio.append(divPrecioPre);
+                divPrecioPre.text(precioTexto);
+                caja.append(divCompra);
             }
             if(sessionStorage.length>0&&sessionStorage.getItem('tipoUsuario')=='C'){
-                divCompra.appendChild(btnCompra);
-                btnCompra.appendChild(btnCompraTexto);
+                divCompra.append(btnCompra);
+                btnCompra.text(btnCompraTexto);
             }
         }
     }

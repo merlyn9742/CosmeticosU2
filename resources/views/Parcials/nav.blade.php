@@ -19,8 +19,8 @@
     </div>
 
     <ul class="">
-        <li><a href="javascript:llamaBuscaProductos();"><span>Productos</span><i class="fas fa-shopping-bag"></i></a></li>
-        <li style="display: none" id="regProd"><a href="javascript:registraProductos();">Registrar productos <i class="fas fa-plus-circle"></i></a></li>
+        <li><a href="javascript:llamaBuscaProductos();" id="produc"><span>Productos</span><i class="fas fa-shopping-bag"></i></a></li>
+        <li style="display: none" id="regProd"><a href="javascript:llamadasParciales()">Registrar productos <i class="fas fa-plus-circle"></i></a></li>
         <li><a href="javascript:muestraLogin();" id="muestraLogin"><span id="sp">Iniciar sesi&oacute;n</span><i class="fas fa-user icono-login"></i></a></li>
         <li style="display: none" id="logout"><a href="javascript:cerrarSesion();">Cerrar sesi&oacute;n<i class="fas fa-user-slash"></i></a></li>
     </ul>
